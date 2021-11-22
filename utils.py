@@ -44,18 +44,31 @@ def decode_gpass(gpass_b45):
 
     decoded = annotate(data[-260][1], glb_schema['properties'])
 
-    informations = {
-        "Name": decoded[-3],
-        "Surname": decoded[-5],
-        "DateOfBirth": decoded[-1],
-        "VaxCode": decoded[3],
-        "Vax": decoded[7],
-        "Producer": expirations[decoded[2]][0],
-        "NumberDoses": decoded[1],
-        "DateOfVaxination": decoded[4],
-        "Code": decoded[6],
-        "State": decoded[5],
-        "IssuingBody": decoded[8]
-    }
+    if expirations[decoded[2]][0] == 'test':
+        information = {
+            "Name": decoded[-3],
+            "Surname": decoded[-5],
+            "DateOfBirth": decoded[-1],
+            "Producer": expirations[decoded[2]][0],
+            "DateOfTest": decoded[1],
+            "Place": decoded[5],
+            "Code": decoded[6],
+            "State": decoded[4],
+            "IssuingBody": decoded[7]
+        }
+    else:
+        information = {
+            "Name": decoded[-3],
+            "Surname": decoded[-5],
+            "DateOfBirth": decoded[-1],
+            "VaxCode": decoded[3],
+            "Vax": decoded[7],
+            "Producer": expirations[decoded[2]][0],
+            "NumberDoses": decoded[1],
+            "DateOfVaxination": decoded[4],
+            "Code": decoded[6],
+            "State": decoded[5],
+            "IssuingBody": decoded[8]
+        }
 
-    return informations
+    return information
