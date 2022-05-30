@@ -149,6 +149,8 @@ cython_debug/
 # developing on PyCharm
 .idea
 
+.DS_Store
+
 config.py
 
 # End of https://www.toptal.com/developers/gitignore/api/flask
